@@ -7,13 +7,23 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: 'babel-loader'
-        }]
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: 'babel-loader'
+            },
+            {
+                test: /\.html$/,
+                use: [{
+                    loader: 'html-loader',
+                    options: {
+                        minimize: true
+                    }
+                }],
+            }
+        ]
     },
-	devServer: {
-		contentBase: [ './' ],
-		watchContentBase: true
-	}
+    devServer: {
+        contentBase: ['./'],
+        watchContentBase: true
+    }
 };

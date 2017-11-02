@@ -4,7 +4,7 @@ import $ from 'jquery';
 import Mustache from 'mustache';
 import axios from 'axios';
 import Http from './http';
-
+import template from './views/template.html';
 
 export default class MyView extends Backbone.View {
 
@@ -14,6 +14,7 @@ export default class MyView extends Backbone.View {
 
     initialize() {
         this.el = '#myarea';
+        console.log(template);
         this.$el = $(this.el);
         this.template = 'Hello';
         Http.service.get('olapa')
@@ -28,7 +29,7 @@ export default class MyView extends Backbone.View {
     }
 
     render() {
-        this.$el.html(Mustache.render(this.template));
+        this.$el.html(Mustache.render(template,{data:'This is a sample. sdfhd'}));
     }
 
 
