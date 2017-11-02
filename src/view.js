@@ -4,6 +4,8 @@ import $ from 'jquery';
 import Mustache from 'mustache';
 import MyView from './myview';
 
+import Http from './http';
+
 
 export default class TestView extends Backbone.View {
     constructor() {
@@ -13,7 +15,15 @@ export default class TestView extends Backbone.View {
     initialize() {
         this.el = 'li';
         this.$el = $(this.el);
-        this.template = '<div id="myarea"></div>'
+        this.template = '<div id="myarea"></div>';
+
+        Http.service.get('test1').then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+
         this.render();
     }
 
